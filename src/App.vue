@@ -1,13 +1,13 @@
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+  <Main></Main>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+  import Main from "./components/Main";
+  export default {
+    name: 'App',
+    components: {Main}
+  }
 </script>
 
 <style>
