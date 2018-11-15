@@ -11,6 +11,13 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+  .sort-btn-wrap{
+    display: flex;
+    float: right;
+    button{
+      border: none;
+      background: transparent;
+    }
+  }
 </style>
