@@ -18,19 +18,10 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import './Main'
     export default {
-        name: 'AdItem',
-      methods: {
-          getAdList: function () {
-            axios.get(`http://comento.cafe24.com/ads.php?page=1&limit=10`)
-              .then(response => {
-                this.ads = response.data.list
-              })
-          }
+        name: 'AdItem'
         }
-      }
 </script>
 
 <style lang="less" scoped>

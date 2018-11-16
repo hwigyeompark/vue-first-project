@@ -27,7 +27,12 @@
         </div>
       </div>
       <!--sort btn-->
-      <Sort></Sort>
+      <template>
+        <div class="sort-btn-wrap">
+          <button @click="getSort">오름차순</button>
+          <button>내림차순</button>
+        </div>
+      </template>
     </div>
     <div class="content">
       <!--writing list-->
@@ -54,13 +59,13 @@
       </div>
       <!--ad list-->
       <div class="container">
-        <div class="card">
+        <div class="card" v-for="ad of ads">
           <div class="card-header">
             Sponsor
           </div>
           <div class="card-body" >
-            <div class="ad-box" v-for="ad of ads">
-              <img src="../assets/images/test.jpg"/>
+            <div class="ad-box">
+              <img v-bind:src="{url}"/>
               <div>
                 <h4>{{ad.title}}</h4>
                 <p>{{ad.contents}}</p>
@@ -86,10 +91,15 @@ export default {
   data () {
     return {
       categories: [],
+      ads: [],
       writingList: [],
       selectedCategory: '',
-      selectedSort: ''
+      selectedSort: '',
+      adImages: []
     }
+  },
+  created() {
+    this.getAdList()
   },
   methods: {
     getCategories: function () {
@@ -99,14 +109,28 @@ export default {
         })
     },
     getCategoryList: function () {
-      axios.get(`http://comento.cafe24.com/request.php?page=1&ord=&category=${this.selectedCategory}`)
+      axios.get(`http://comento.cafe24.com/request.php?page=1&ord=${this.selectedSort}&category=${this.selectedCategory}`)
         .then(response => {
           this.writingList = response.data.list
         })
     },
+    getSort: function () {
+
+    },
     goToDetailPage: function () {
-      console.log('d')
       this.$router.push('/detailPage')
+    },
+    getAdList: function () {
+      axios.get(`http://comento.cafe24.com/ads.php?page=1&limit=10`)
+        .then(response => {
+          this.ads = response.data.list
+        })
+      for (i=0; i<ads.length; i++){
+        
+      }
+    },
+    getAdImage: function () {
+      axios.get()
     }
   }
 }
@@ -117,12 +141,24 @@ export default {
     width: 100%;
     overflow: hidden;
   }
-
   .header {
     display: flex;
-    width: 100%;
+    width: 80%;
     height: auto;
     justify-content: center;
+  }
+  .filter-btn{
+    float: left;
+  }
+  .sort-btn-wrap{
+    display: flex;
+    button{
+      width: 100px;
+      float: right;
+      border: none;
+      background: transparent;
+      margin: 1%;
+    }
   }
   .category-box-wrap{
     .header;
@@ -138,9 +174,16 @@ export default {
       float: right;
     }
   }
-
   .card-body > ul li {
     float: left;
     margin: 1%;
+  }
+  .ad-box{
+    display: flex;
+    flex-wrap: wrap;
+    & img{
+      width: 350px;
+      height: 300px;
+    }
   }
 </style>

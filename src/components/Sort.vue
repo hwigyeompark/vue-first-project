@@ -1,18 +1,14 @@
 <template>
   <div class="sort-btn-wrap">
-    <button @click="onClickSort">오름차순</button>
-    <button>내림차순</button>
+    <button v-model="selectedSort" :value="writing.ord">오름차순</button>
+    <button v-model="selectedSort" :value="writing.ord">내림차순</button>
   </div>
 </template>
 
 <script>
+  import './Main'
     export default {
-      name: 'Sort',
-      methods: {
-        onClickSort: function () {
-          axios.getPar
-        }
-      }
+      name: 'Sort'
     }
 </script>
 
