@@ -37,7 +37,7 @@
     <div class="content">
       <!--writing list-->
       <div class="container">
-        <div class="card" v-for="writing of writingList" @click="goToDetailPage">
+        <div class="card writing-box-wrap" v-for="writing of writingList" @click="goToDetailPage">
           <div class="card-header">
             <ul>
               <li></li>
@@ -59,16 +59,19 @@
       </div>
       <!--ad list-->
       <div class="container">
-        <div class="card" v-for="ad of ads">
+        <div class="card ad-box-wrap" v-for="ad of ads">
           <div class="card-header">
             Sponsor
           </div>
           <div class="card-body" >
             <div class="ad-box">
-              <img v-bind:src="{url}"/>
-              <div>
+              <div class="ad-box-img">
+                <img v-bind:src="{url}"/>
+              </div>
+              <div class="ad-box-writing">
                 <h4>{{ad.title}}</h4>
                 <p>{{ad.contents}}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -125,9 +128,6 @@ export default {
         .then(response => {
           this.ads = response.data.list
         })
-      for (i=0; i<ads.length; i++){
-        
-      }
     },
     getAdImage: function () {
       axios.get()
@@ -140,10 +140,11 @@ export default {
   #main-wrap {
     width: 100%;
     overflow: hidden;
+    margin-top: 4%;
   }
   .header {
     display: flex;
-    width: 80%;
+    width: 100%;
     height: auto;
     justify-content: center;
   }
@@ -178,12 +179,29 @@ export default {
     float: left;
     margin: 1%;
   }
+
+  .writing-box-wrap{
+    margin: 3%;
+  }
+  .ad-box-wrap{
+    margin: 3%;
+  }
   .ad-box{
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     & img{
       width: 350px;
       height: 300px;
+    }
+  }
+  .ad-box-img{
+    width: 40%;
+  }
+  .ad-box-writing{
+    width: 60%;
+    & p{
+      word-break: break-all;
     }
   }
 </style>
