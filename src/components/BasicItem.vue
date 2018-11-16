@@ -33,9 +33,8 @@
           }
       },
       methods: {
-          getCategoryList: function () {
-            alert('afd')
-          axios.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=1`)
+        getCategoryList: function () {
+          axios.get(`http://comento.cafe24.com/request.php?page=1&ord=&category=${this.selectedCategory}`)
             .then(response => {
               this.writingList = response.data.list
             })
