@@ -1,4 +1,4 @@
-# comento-test
+# test
 
 > first Vue.js project
 
