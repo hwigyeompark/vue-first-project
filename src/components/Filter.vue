@@ -1,21 +1,23 @@
 <template>
   <div class="filter-wrap">
-    <button class="btn btn-primary filter-btn" data-toggle="modal" data-target="#filter-modal">필터</button>
+    <button class="btn btn-primary filter-btn" data-toggle="modal" data-target="#filter-modal"
+            @click="getCategories">필터
+    </button>
+    <!--filter modal-->
     <div class="modal" id="filter-modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h3 class="modal-title">필터</h3>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
           </div>
-          <div class="modal-body">
-            <div class="form-check">
-              <input type="checkbox" value="category_1" name="category_1"/>카테고리1
-              <input type="checkbox" value="category_2" name="category_2"/>카테고리2
-              <input type="checkbox" value="category_3" name="category_3"/>카테고리3
+          <div class="modal-body category-box-wrap">
+            <div class="category-box" v-for="category of categories">
+              <input v-model="selectedCategory" type="radio" :value="category.no" name="category"/> {{category.name}}
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="getCategoryList">저장</button>
           </div>
         </div>
       </div>
@@ -24,6 +26,7 @@
 </template>
 
 <script>
+  import './Main'
   export default {
     name: 'Filter'
     }

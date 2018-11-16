@@ -1,23 +1,25 @@
 <template>
-<div class="container">
-  <div class="card" v-for="writing of writingList">
-    <div class="card-header">
-      <ul>
-        <li>카테고리명</li>
-        <li>{{writing.no}}</li>
-      </ul>
+  <div class="container">
+    <div class="card" v-for="writing of writingList">
+      <div class="card-header">
+        <ul>
+          <li></li>
+          <li>{{writing.no}}</li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>{{writing.email}}</li>
+          <li>|</li>
+          <li>{{writing.updated_at}}</li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <b>{{writing.title}}</b><br/><br/>
+        {{writing.contents}}
+      </div>
     </div>
-    <div class="card-body">
-      <ul>
-        <li>{{writing.email}}</li>
-        <li>|</li>
-        <li>{{writing.updated_at}}</li>
-      </ul>
-      <b>{{writing.title}}</b>
-    </div>
-    <div class="card-body">{{writing.content}}</div>
   </div>
-</div>
 </template>
 
 <script>
