@@ -121,6 +121,7 @@ export default {
 
     },
     goToDetailPage: function () {
+      console.log("success")
       this.$router.push('/detailPage')
     },
     getAdList: function () {
@@ -181,6 +182,9 @@ export default {
 
   .writing-box-wrap{
     margin: 3%;
+    &:hover{
+      cursor: pointer;
+    }
   }
   .ad-box-wrap{
     margin: 3%;

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Welcom detail page</h1>
     <form>
       <div class="form-group">
         <label for="exampleFormControlInput1">제목</label>
