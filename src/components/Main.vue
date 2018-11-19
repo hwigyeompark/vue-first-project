@@ -29,8 +29,8 @@
       <!--sort btn-->
       <template>
         <div class="sort-btn-wrap">
-          <button @click="getSort">오름차순</button>
-          <button>내림차순</button>
+          <button @click="getSortData" v-if="selectedSort ==='asc'" >오름차순</button>
+          <button @click="getSortData" v-else-if="selectedSort === 'desc'">내림차순</button>
         </div>
       </template>
     </div>
@@ -117,8 +117,8 @@ export default {
           this.writingList = response.data.list
         })
     },
-    getSort: function () {
-
+    getSortData: function (ord) {
+      axios.get(`http://comento.cafe24.com/request.php?page=1&ord=` + ord + `&category=${this.selectedCategory}`)
     },
     goToDetailPage: function () {
       console.log("success")
