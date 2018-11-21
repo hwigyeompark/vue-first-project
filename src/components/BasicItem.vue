@@ -41,13 +41,16 @@
             selectedCategory: ''
           }
       },
+    created(){
+      this.getCategoryList()
+    },
       methods: {
         goToDetailPage: function () {
           console.log('success')
           this.$router.push('/detailPage')
         },
         getCategoryList: function () {
-          axios.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=${this.selectedCategory}`)
+          axios.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=1`)
             .then(response => {
               this.writingList = response.data.list
             })
@@ -65,5 +68,13 @@
   }
   .card-body>ul li{
     float: left;
+    margin: 1%;
+  }
+
+  .writing-box-wrap{
+    margin: 3%;
+    &:hover{
+      cursor: pointer;
+    }
   }
 </style>

@@ -17,7 +17,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="getCategoryList">저장</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
             </div>
           </div>
         </div>
@@ -52,16 +52,6 @@
         axios.get(`http://comento.cafe24.com/category.php`)
           .then(response => {
             this.categories = response.data.list
-          })
-      },
-      /*        getCategoryList(data) {
-          this.writingList = data
-          }
-        }*/
-      getCategoryList: function () {
-        axios.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=${this.selectedCategory}`)
-          .then(response => {
-            this.writingList = response.data.list
           })
       }
     }

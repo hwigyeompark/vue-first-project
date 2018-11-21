@@ -34,55 +34,16 @@
         </div>-->
     </div>
     <div class="content">
-      <BasicItem />
       <!--writing list-->
-      <!--<div class="container">
-        <div class="card writing-box-wrap" v-for="writing of writingList" @click="goToDetailPage">
-          <div class="card-header">
-            <ul>
-              <li></li>
-              <li>{{writing.no}}</li>
-            </ul>
-          </div>
-          <div class="card-body">
-            <ul>
-              <li>{{writing.email}}</li>
-              <li>|</li>
-              <li>{{writing.updated_at}}</li>
-            </ul>
-          </div>
-          <div class="card-body">
-            <b>{{writing.title}}</b><br/><br/>
-            {{writing.contents}}
-          </div>
-        </div>
-      </div>-->
+      <BasicItem></BasicItem>
       <!--ad list-->
-      <div class="container">
-        <div class="card ad-box-wrap" v-for="ad of ads">
-          <div class="card-header">
-            Sponsor
-          </div>
-          <div class="card-body" >
-            <div class="ad-box">
-              <div class="ad-box-img">
-                <img v-bind:src="{url}"/>
-              </div>
-              <div class="ad-box-writing">
-                <h4>{{ad.title}}</h4>
-                <p>{{ad.contents}}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <AdItem></AdItem>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
 import BasicItem from './BasicItem'
 import AdItem from './AdItem'
 import Header from './Header'
@@ -98,16 +59,7 @@ export default {
       adImages: []
     }
   },
-  created() {
-    this.getAdList()
-  },
   methods: {
-    getAdList: function () {
-      axios.get(`http://comento.cafe24.com/ads.php?page=1&limit=10`)
-        .then(response => {
-          this.ads = response.data.list
-        })
-    },
     getAdImage: function () {
     }
   }
@@ -125,23 +77,6 @@ export default {
     width: 100%;
     height: auto;
     justify-content: center;
-  }
-  .card-header > ul li {
-    float: left;
-    &:last-child {
-      float: right;
-    }
-  }
-  .card-body > ul li {
-    float: left;
-    margin: 1%;
-  }
-
-  .writing-box-wrap{
-    margin: 3%;
-    &:hover{
-      cursor: pointer;
-    }
   }
   .ad-box-wrap{
     margin: 3%;
