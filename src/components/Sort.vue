@@ -24,8 +24,11 @@
     display: flex;
     float: right;
     button{
+      width: 100px;
+      float: right;
       border: none;
       background: transparent;
+      margin: 1%;
       &:hover{
         cursor: pointer;
       }

@@ -28,24 +28,58 @@
 <script>
   import './Main'
   import axios from 'axios'
-    export default {
-        name: 'Category',
-      data() {
-          return{
-            categories: [],
-            selectedCategory: ''
-          }
+  import {eventBus} from '../main';
+
+/*  eventBus.$emit('getCategories', axios.get(`http://comento.cafe24.com/category.php`)
+    .then(response => {
+      this.categories = response.data.list
+    })
+  )*/
+  export default {
+    name: 'Category',
+    data() {
+      return {
+        categories: [],
+        writingList: [],
+        selectedCategory: ''
+      }
+    },
+    /*    created(){
+          eventBus.$on('getCategoryList', this.getCategoryList)
+    },*/
+    methods: {
+      getCategories: function () {
+        axios.get(`http://comento.cafe24.com/category.php`)
+          .then(response => {
+            this.categories = response.data.list
+          })
       },
-      methods: {
-        getCategories: function () {
-          axios.get(`http://comento.cafe24.com/category.php`)
-            .then(response => {
-              this.categories = response.data.list
-            })
-        }
+      /*        getCategoryList(data) {
+          this.writingList = data
+          }
+        }*/
+      getCategoryList: function () {
+        axios.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=${this.selectedCategory}`)
+          .then(response => {
+            this.writingList = response.data.list
+          })
       }
     }
+  }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  .filter-btn{
+    float: left;
+  }
+  .category-box-wrap{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+  }
+  .category-box {
+    float: left;
+    margin: 1%;
+  }
 </style>

@@ -126,27 +126,6 @@ export default {
     height: auto;
     justify-content: center;
   }
-  .filter-btn{
-    float: left;
-  }
-  .sort-btn-wrap{
-    display: flex;
-    button{
-      width: 100px;
-      float: right;
-      border: none;
-      background: transparent;
-      margin: 1%;
-    }
-  }
-  .category-box-wrap{
-    .header;
-  }
-  .category-box {
-    float: left;
-    margin: 1%;
-  }
-
   .card-header > ul li {
     float: left;
     &:last-child {

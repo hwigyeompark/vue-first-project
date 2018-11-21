@@ -24,17 +24,26 @@
 
 <script>
   import './Main'
+  import './Category'
   import axios from 'axios'
-    export default {
+  import {eventBus} from '../main';
+
+/*  eventBus.$emit('getCategoryList', axios.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=${this.selectedCategory}`)
+    .then(response => {
+      this.writingList = response.data.list
+    })
+  )*/
+  export default {
         name: 'BasicItem',
       data(){
           return{
-            writingList: []
+            writingList: [],
+            selectedCategory: ''
           }
       },
       methods: {
         goToDetailPage: function () {
-          console.log("success")
+          console.log('success')
           this.$router.push('/detailPage')
         },
         getCategoryList: function () {
