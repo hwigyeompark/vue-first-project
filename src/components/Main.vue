@@ -29,8 +29,8 @@
       <!--sort btn-->
       <template>
         <div class="sort-btn-wrap">
-          <button @click="getSortData" name="asc" v-bind="" >오름차순</button>
-          <button @click="getSortData" v-else-if="selectedSort === 'desc'">내림차순</button>
+          <button @click="getSortData">오름차순</button>
+          <button @click="getSortData">내림차순</button>
         </div>
       </template>
     </div>

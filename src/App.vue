@@ -1,13 +1,15 @@
 <template>
-  <Main></Main>
-  <router-view class="detail-page" name="DetailPage"></router-view>
+  <div>
+    <Main></Main>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
   import Main from './components/Main'
   export default {
     name: 'App',
-    components: {Main}
+    components: Main
   }
 </script>
 
