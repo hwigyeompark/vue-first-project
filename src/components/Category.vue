@@ -1,5 +1,6 @@
 <template>
     <div class="filter-wrap">
+      <child-component v-bind:selected-category="selectedCategory"></child-component>
       <button class="btn btn-primary filter-btn" data-toggle="modal" data-target="#filter-modal" @click="getCategories">
         필터
       </button>
@@ -17,7 +18,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="getCategoryList">저장</button>
             </div>
           </div>
         </div>
@@ -26,15 +27,8 @@
 </template>
 
 <script>
-  import './Main'
   import axios from 'axios'
-  import {eventBus} from '../main';
-
-/*  eventBus.$emit('getCategories', axios.get(`http://comento.cafe24.com/category.php`)
-    .then(response => {
-      this.categories = response.data.list
-    })
-  )*/
+  import {eventBus} from '../main'
   export default {
     name: 'Category',
     data() {
@@ -44,15 +38,20 @@
         selectedCategory: ''
       }
     },
-    /*    created(){
+        created(){
           eventBus.$on('getCategoryList', this.getCategoryList)
-    },*/
+    },
     methods: {
       getCategories: function () {
         axios.get(`http://comento.cafe24.com/category.php`)
           .then(response => {
             this.categories = response.data.list
           })
+      },
+      getCategoryList(data){
+        data.then(response => {
+          this.writingList = response.data.list
+        })
       }
     }
   }

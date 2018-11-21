@@ -23,22 +23,19 @@
 </template>
 
 <script>
-  import './Main'
   import './Category'
   import axios from 'axios'
-  import {eventBus} from '../main';
+  import {eventBus} from '../main'
 
-/*  eventBus.$emit('getCategoryList', axios.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=${this.selectedCategory}`)
-    .then(response => {
-      this.writingList = response.data.list
-    })
-  )*/
+  Vue.component('child-component', {
+    props: ['selectedCategory']
+  })
+  eventBus.$emit('getCategoryList', axios.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=${this.props.selectedCategory}`))
   export default {
         name: 'BasicItem',
       data(){
           return{
-            writingList: [],
-            selectedCategory: ''
+            writingList: []
           }
       },
     created(){
