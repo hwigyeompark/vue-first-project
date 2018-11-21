@@ -2,13 +2,12 @@
   <div id="main-wrap">
     <div class="header">
       <!--filter btn-->
-      <Header>
-      </Header>
-<!--      <div class="filter-wrap">
+      <Header></Header>
+      <div class="filter-wrap">
         <button class="btn btn-primary filter-btn" data-toggle="modal" data-target="#filter-modal"
                 @click="getCategories">필터
         </button>
-        &lt;!&ndash;filter modal&ndash;&gt;
+        <!--filter modal-->
         <div class="modal" id="filter-modal">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -27,7 +26,7 @@
             </div>
           </div>
         </div>
-      </div>-->
+      </div>
       <!--sort btn-->
 <!--        <div class="sort-btn-wrap">
           <button @click="getSortData">오름차순</button>
@@ -35,8 +34,9 @@
         </div>-->
     </div>
     <div class="content">
+      <BasicItem />
       <!--writing list-->
-      <div class="container">
+      <!--<div class="container">
         <div class="card writing-box-wrap" v-for="writing of writingList" @click="goToDetailPage">
           <div class="card-header">
             <ul>
@@ -56,7 +56,7 @@
             {{writing.contents}}
           </div>
         </div>
-      </div>
+      </div>-->
       <!--ad list-->
       <div class="container">
         <div class="card ad-box-wrap" v-for="ad of ads">
@@ -102,10 +102,6 @@ export default {
     this.getAdList()
   },
   methods: {
-    goToDetailPage: function () {
-      console.log("success")
-      this.$router.push('/detailPage')
-    },
     getAdList: function () {
       axios.get(`http://comento.cafe24.com/ads.php?page=1&limit=10`)
         .then(response => {

@@ -26,7 +26,6 @@
 </template>
 
 <script>
-  import './Main'
   import axios from 'axios'
   import {eventBus} from '../main'
 
@@ -46,7 +45,7 @@
           })
       },
       getCategoryList: function () {
-        axios.get(`http://comento.cafe24.com/request.php?page=1&ord=${this.selectedSort}&category=${this.selectedCategory}`)
+        axios.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=${this.selectedCategory}`)
           .then(response => {
             eventBus.writingList = response.data.list
           })

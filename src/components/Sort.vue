@@ -12,6 +12,7 @@
       name: 'sort',
       methods: {
         getSortData: function (ord) {
+          console.log('click the sort btn')
           axios.get(`http://comento.cafe24.com/request.php?page=1&ord=` + ord + `&category=${this.selectedCategory}`)
         }
       }

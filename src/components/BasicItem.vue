@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="card" v-for="writing of writingList">
+    <div class="card writing-box-wrap" v-for="writing of writingList" @click="goToDetailPage">
       <div class="card-header">
         <ul>
           <li></li>
@@ -33,8 +33,12 @@
           }
       },
       methods: {
+        goToDetailPage: function () {
+          console.log("success")
+          this.$router.push('/detailPage')
+        },
         getCategoryList: function () {
-          axios.get(`http://comento.cafe24.com/request.php?page=1&ord=&category=${this.selectedCategory}`)
+          axios.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=${this.selectedCategory}`)
             .then(response => {
               this.writingList = response.data.list
             })
