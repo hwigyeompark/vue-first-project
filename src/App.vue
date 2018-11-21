@@ -1,5 +1,6 @@
 <template>
   <Main></Main>
+  <router-view class="detail-page" name="DetailPage"></router-view>
 </template>
 
 <script>

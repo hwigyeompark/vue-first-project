@@ -10,12 +10,12 @@ export default new Router({
     {
       path: '/',
       name: 'Main',
-      component: {Main}
+      component: Main
     },
     {
       path: '/detailPage',
       name: 'DetailPage',
-      component: {DetailPage}
+      component: DetailPage
     }
   ]
 })
