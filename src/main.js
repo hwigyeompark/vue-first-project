@@ -7,6 +7,7 @@ import router from './router'
 import 'expose-loader?$!expose-loader?jQuery!jquery'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+export const eventBus = new Vue();
 
 /* eslint-disable no-new */
 new Vue({

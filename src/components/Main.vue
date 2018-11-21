@@ -2,11 +2,13 @@
   <div id="main-wrap">
     <div class="header">
       <!--filter btn-->
-      <div class="filter-wrap">
+      <Header>
+      </Header>
+<!--      <div class="filter-wrap">
         <button class="btn btn-primary filter-btn" data-toggle="modal" data-target="#filter-modal"
                 @click="getCategories">필터
         </button>
-        <!--filter modal-->
+        &lt;!&ndash;filter modal&ndash;&gt;
         <div class="modal" id="filter-modal">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -25,14 +27,12 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
       <!--sort btn-->
-      <template>
-        <div class="sort-btn-wrap">
+<!--        <div class="sort-btn-wrap">
           <button @click="getSortData">오름차순</button>
           <button @click="getSortData">내림차순</button>
-        </div>
-      </template>
+        </div>-->
     </div>
     <div class="content">
       <!--writing list-->
@@ -83,20 +83,17 @@
 
 <script>
 import axios from 'axios'
-import Filter from './Filter'
-import Sort from './Sort'
 import BasicItem from './BasicItem'
 import AdItem from './AdItem'
+import Header from './Header'
 
 export default {
-  name: 'Main',
-  components: {AdItem, BasicItem, Filter, Sort},
+  name: 'main',
+  components: {Header, AdItem, BasicItem},
   data () {
     return {
-      categories: [],
       ads: [],
       writingList: [],
-      selectedCategory: '',
       selectedSort: '',
       adImages: []
     }
@@ -105,21 +102,6 @@ export default {
     this.getAdList()
   },
   methods: {
-    getCategories: function () {
-      axios.get(`http://comento.cafe24.com/category.php`)
-        .then(response => {
-          this.categories = response.data.list
-        })
-    },
-    getCategoryList: function () {
-      axios.get(`http://comento.cafe24.com/request.php?page=1&ord=${this.selectedSort}&category=${this.selectedCategory}`)
-        .then(response => {
-          this.writingList = response.data.list
-        })
-    },
-    getSortData: function (ord) {
-      axios.get(`http://comento.cafe24.com/request.php?page=1&ord=` + ord + `&category=${this.selectedCategory}`)
-    },
     goToDetailPage: function () {
       console.log("success")
       this.$router.push('/detailPage')

@@ -52,7 +52,7 @@
   import './Main'
 
   export default {
-    name: 'DetailPage'
+    name: 'detailPage'
   }
 </script>
 

@@ -27,9 +27,32 @@
 
 <script>
   import './Main'
+  import axios from 'axios'
+  import {eventBus} from '../main'
+
   export default {
-    name: 'Filter'
+    name: 'filter',
+    data() {
+      return{
+        categories: [],
+        selectedCategory: ''
+      }
+    },
+    methods: {
+      getCategories: function () {
+        axios.get(`http://comento.cafe24.com/category.php`)
+          .then(response => {
+            this.categories = response.data.list
+          })
+      },
+      getCategoryList: function () {
+        axios.get(`http://comento.cafe24.com/request.php?page=1&ord=${this.selectedSort}&category=${this.selectedCategory}`)
+          .then(response => {
+            eventBus.writingList = response.data.list
+          })
+      },
     }
+  }
 </script>
 
 <style scoped>
