@@ -3,11 +3,11 @@
     <div class="header">
       <!--filter btn-->
       <Header></Header>
-      <div class="filter-wrap">
+<!--      <div class="filter-wrap">
         <button class="btn btn-primary filter-btn" data-toggle="modal" data-target="#filter-modal"
                 @click="getCategories">필터
         </button>
-        <!--filter modal-->
+        &lt;!&ndash;filter modal&ndash;&gt;
         <div class="modal" id="filter-modal">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -26,7 +26,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
       <!--sort btn-->
 <!--        <div class="sort-btn-wrap">
           <button @click="getSortData">오름차순</button>
@@ -88,7 +88,7 @@ import AdItem from './AdItem'
 import Header from './Header'
 
 export default {
-  name: 'main',
+  name: 'Main',
   components: {Header, AdItem, BasicItem},
   data () {
     return {

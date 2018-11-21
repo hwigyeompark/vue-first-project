@@ -1,19 +1,21 @@
 <template>
-    <div>
-      <Filter></Filter>
+    <div class="header-wrap">
+      <Category></Category>
       <Sort></Sort>
     </div>
 </template>
 
 <script>
-    import Filter from './Filter';
-    import Sort from './Sort';
+    import Category from './Category'
+    import Sort from './Sort'
     export default {
         name: 'header',
-      components: {Sort, Filter}
+      components: {Sort, Category}
     }
 </script>
 
 <style scoped>
-
+  .header-wrap{
+    display: flex;
+  }
 </style>
