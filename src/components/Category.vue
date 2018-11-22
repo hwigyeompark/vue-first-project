@@ -27,7 +27,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import {eventBus} from '../main'
   export default {
     name: 'Category',
@@ -41,13 +40,13 @@
     },
     methods: {
       getCategories: function () {
-        axios.get(`http://comento.cafe24.com/category.php`)
+        this.$http.get(`http://comento.cafe24.com/category.php`)
           .then(response => {
             this.categories = response.data.list
           })
       },
       getCategoryList: function () {
-        axios.get(`http://comento.cafe24.com/request.php?page=1&ord=desc&category=${this.selectedCategory}`)
+        this.$http.get(`http://comento.cafe24.com/request.php?page=1&ord=desc&category=${this.selectedCategory}`)
           .then(response => {
             this.sendWritingList = response.data.list
           })

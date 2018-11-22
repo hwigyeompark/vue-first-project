@@ -4,11 +4,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
 import 'expose-loader?$!expose-loader?jQuery!jquery'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 export const eventBus = new Vue();
 
+Vue.prototype.$http = axios
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

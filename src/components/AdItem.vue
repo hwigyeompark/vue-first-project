@@ -20,8 +20,6 @@
 </template>
 
 <script>
-  import './Main'
-  import axios from 'axios'
     export default {
         name: 'AdItem',
       data(){
@@ -35,7 +33,7 @@
       },
       methods: {
         getAdList: function () {
-          axios.get(`http://comento.cafe24.com/ads.php?page=1&limit=10`)
+          this.$http.get(`http://comento.cafe24.com/ads.php?page=1&limit=10`)
             .then(response => {
               this.ads = response.data.list
             })

@@ -1,24 +1,27 @@
 <template>
   <div>
-    <h1>Welcom detail page</h1>
-    <form>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">제목</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">이메일</label>
-        <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">작성일</label>
-        <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="name@example.com">
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">내용</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
-    </form>
+    <Header></Header>
+    <div class="container">
+      <h1>Welcom detail page</h1>
+      <form>
+        <div class="form-group">
+          <h5>제목</h5>
+          <div>test</div>
+        </div>
+        <div class="form-group">
+          <h5>이메일</h5>
+          <div>test</div>
+        </div>
+        <div class="form-group">
+          <h5>작성일</h5>
+          <div>test</div>
+        </div>
+        <div class="form-group">
+          <h5>내용</h5>
+          <textarea>test</textarea>
+        </div>
+      </form>
+    </div>
     <!--popup-->
     <div class="modal">
       <div class="modal-dialog">
@@ -49,10 +52,11 @@
 </template>
 
 <script>
-  import './Main'
+  import Header from './Header'
 
   export default {
-    name: 'detailPage'
+    name: 'detailPage',
+    components: {Header}
   }
 </script>
 
