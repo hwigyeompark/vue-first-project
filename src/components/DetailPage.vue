@@ -30,7 +30,7 @@
       </div>
     </div>
     <!--popup-->
-    <div class="modal">
+    <div class="modal" id="join-induce-modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -43,9 +43,9 @@
                 <p><span>익명</span>으로 대화할 수 있습니다.</p>
               </div>
               <div class="join-btn-wrap">
-                <button>페이스북 계정으로 회원가입</button>
-                <button>구글 계정으로 회원가입</button>
-                <button>네이버 계정으로 회원가입</button>
+                <button class="facebook-btn">페이스북 계정으로 회원가입</button>
+                <button class="google-btn">구글 계정으로 회원가입</button>
+                <button class="naver-btn">네이버 계정으로 회원가입</button>
               </div>
             </div>
           </div>
@@ -72,9 +72,16 @@
       }
     },
     created(){
+      this.showPopup()
       eventBus.$on('get-detail', sendDetailList => {
         this.receivedDetailList = sendDetailList
       })
+    },
+    methods: {
+      showPopup: function () {
+        $('#join-induce-modal').modal()
+        alert('dfa')
+      }
     }
   }
 </script>
@@ -97,10 +104,12 @@
   .join-induce-ment {
     .join-induce-box;
     border: 1px solid #333333;
-    padding: 3%;
+    margin: 2% 0 2% 0;
+    padding: 5% 3% 2% 3%;
     & p {
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      vertical-align: center;
     }
     & span {
       color: red;
@@ -111,16 +120,21 @@
     .join-induce-box;
     & button {
       width: 100%;
+      margin-top: 2.5%;
       padding: 10px;
       color: #ffffff;
+      border: none;
+      &:hover{
+        cursor: pointer;
+      }
     }
-    & button:nth-child(1) {
+    & .facebook-btn {
       background-color: #3b5998;
     }
-    & button:nth-child(2) {
+    & .google-btn {
       background-color: #ea4335;
     }
-    & button:nth-child(3) {
+    & .naver-btn {
       background-color: #00bd39;
     }
   }

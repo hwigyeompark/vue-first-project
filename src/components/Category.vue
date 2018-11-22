@@ -41,6 +41,7 @@
     created(){
       eventBus.$on('click-sort', sendSelectedSort => {
         this.receivedSelectedSort = sendSelectedSort
+        this.getCategoryList()
       })
     },
     methods: {
