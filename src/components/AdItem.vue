@@ -7,7 +7,7 @@
       <div class="card-body" >
         <div class="ad-box">
           <div class="ad-box-img">
-            <img v-bind:src="{url}"/>
+            <img/>
           </div>
           <div class="ad-box-writing">
             <h4>{{ad.title}}</h4>

@@ -1,6 +1,6 @@
 <template>
     <div class="filter-wrap">
-      <child-component v-bind:selected-category="selectedCategory"></child-component>
+<!--      <child-component v-bind:selected-category="selectedCategory"></child-component>-->
       <button class="btn btn-primary filter-btn" data-toggle="modal" data-target="#filter-modal" @click="getCategories">
         필터
       </button>
@@ -35,11 +35,9 @@
       return {
         categories: [],
         writingList: [],
+        sendWritingList: [],
         selectedCategory: ''
       }
-    },
-        created(){
-          eventBus.$on('getCategoryList', this.getCategoryList)
     },
     methods: {
       getCategories: function () {
@@ -48,10 +46,12 @@
             this.categories = response.data.list
           })
       },
-      getCategoryList(data){
-        data.then(response => {
-          this.writingList = response.data.list
-        })
+      getCategoryList: function () {
+        axios.get(`http://comento.cafe24.com/request.php?page=1&ord=desc&category=${this.selectedCategory}`)
+          .then(response => {
+            this.writingList = response.data.list
+          })
+        eventBus.$emit('select-category', this.sendWritingList)
       }
     }
   }

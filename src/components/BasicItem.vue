@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="card writing-box-wrap" v-for="writing of writingList" @click="goToDetailPage">
+    <div class="card writing-box-wrap" v-for="writing of preWritingList" @click="goToDetailPage">
       <div class="card-header">
         <ul>
           <li></li>
@@ -23,33 +23,34 @@
 </template>
 
 <script>
+  import './Main'
   import './Category'
   import axios from 'axios'
-  import {eventBus} from '../main'
+  import {eventBus} from '../main';
 
-  Vue.component('child-component', {
-    props: ['selectedCategory']
-  })
-  eventBus.$emit('getCategoryList', axios.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=${this.props.selectedCategory}`))
   export default {
         name: 'BasicItem',
       data(){
           return{
-            writingList: []
+            receivedWritingList: [],
+            preWritingList: []
           }
       },
     created(){
-      this.getCategoryList()
+      this.getPreCategoryList()
+      eventBus.$on('select-category', sendWritingList => {
+        this.receivedWritingList = sendWritingList
+      })
     },
       methods: {
         goToDetailPage: function () {
           console.log('success')
           this.$router.push('/detailPage')
         },
-        getCategoryList: function () {
+        getPreCategoryList: function () {
           axios.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=1`)
             .then(response => {
-              this.writingList = response.data.list
+              this.preWritingList = response.data.list
             })
         }
       }
