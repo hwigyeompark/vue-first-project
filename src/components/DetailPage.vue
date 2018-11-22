@@ -3,24 +3,24 @@
     <Header></Header>
     <div class="container">
       <h1>Welcom detail page</h1>
-      <form>
+      <div class="detail-box-wrap" v-for="detail of detailList">
         <div class="form-group">
           <h5>제목</h5>
-          <div>test</div>
+          <div>{{detail.title}}</div>
         </div>
         <div class="form-group">
           <h5>이메일</h5>
-          <div>test</div>
+          <div>{{detail.email}}</div>
         </div>
         <div class="form-group">
           <h5>작성일</h5>
-          <div>test</div>
+          <div>{{detail.updated_at}}</div>
         </div>
         <div class="form-group">
           <h5>내용</h5>
-          <textarea>test</textarea>
+          <div>{{detail.contents}}</div>
         </div>
-      </form>
+      </div>
     </div>
     <!--popup-->
     <div class="modal">
@@ -56,7 +56,27 @@
 
   export default {
     name: 'detailPage',
-    components: {Header}
+    components: {Header},
+    data(){
+      return{
+        detailList: []
+      }
+    },
+    created(){
+      this.getDetailList()
+      this.joinPopup()
+    },
+    methods: {
+      getDetailList: function () {
+        this.$http.get(`http://comento.cafe24.com/detail.php?req_no=1`)
+          .then(response => {
+            this.detailList = response.data.detail
+          })
+      },
+      joinPopup: function () {
+
+      }
+    }
   }
 </script>
 

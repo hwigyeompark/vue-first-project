@@ -1,6 +1,5 @@
 <template>
     <div class="filter-wrap">
-<!--      <child-component v-bind:selected-category="selectedCategory"></child-component>-->
       <button class="btn btn-primary filter-btn" data-toggle="modal" data-target="#filter-modal" @click="getCategories">
         필터
       </button>
@@ -35,8 +34,14 @@
         categories: [],
         writingList: [],
         sendWritingList: [],
-        selectedCategory: ''
+        selectedCategory: '',
+        receivedSelectedSort: ''
       }
+    },
+    created(){
+      eventBus.$on('click-sort', sendSelectedSort => {
+        this.receivedSelectedSort = sendSelectedSort
+      })
     },
     methods: {
       getCategories: function () {
@@ -46,11 +51,11 @@
           })
       },
       getCategoryList: function () {
-        this.$http.get(`http://comento.cafe24.com/request.php?page=1&ord=desc&category=${this.selectedCategory}`)
+        this.$http.get(`http://comento.cafe24.com/request.php?page=1&ord=${this.receivedSelectedSort}&category=${this.selectedCategory}`)
           .then(response => {
             this.sendWritingList = response.data.list
+            eventBus.$emit('select-category', this.sendWritingList)
           })
-        eventBus.$emit('select-category', this.sendWritingList)
       }
     }
   }
