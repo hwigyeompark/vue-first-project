@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="card writing-box-wrap" v-for="writing of receivedWritingList" @click="goToDetailPage">
+    <div class="card writing-box-wrap" v-for="writing of receivedWritingList" @click="goToDetailPage(writing.no)">
       <div class="card-header">
         <ul>
           <li></li>
@@ -44,8 +44,9 @@
       })
     },
       methods: {
-        goToDetailPage: function () {
+        goToDetailPage: function (num) {
           this.$router.push('/detailPage')
+          this.selectedDetailNum = num
           this.$http.get(`http://comento.cafe24.com/detail.php?req_no=${this.selectedDetailNum}`)
             .then(response => {
               this.sendDetailList = response.data.detail

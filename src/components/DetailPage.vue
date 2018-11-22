@@ -1,9 +1,13 @@
 <template>
-  <div>
+  <div class="detail-wrap">
     <Header></Header>
     <div class="container">
       <h3>Welcom detail page</h3>
       <div class="detail-box-wrap" v-for="detail of receivedDetailList">
+        <div class="form-group">
+          <h5>글 번호</h5>
+          <div>{{detail.no}}</div>
+        </div>
         <div class="form-group">
           <h5>제목</h5>
           <div>{{detail.title}}</div>
@@ -77,6 +81,9 @@
 </script>
 
 <style lang="less" scoped>
+  .detail-wrap{
+    margin: 4%;
+  }
   .join-induce-box {
     width: 100%;
     margin: 0 auto;
