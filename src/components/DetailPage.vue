@@ -79,7 +79,7 @@
     },
     methods: {
       showJoinPopup: function () {
-        console.log('success showjoin')
+        console.log('success show join popup')
         $('#join-induce-modal-wrap').appendTo('body').modal('show')
       },
       showJoinFooterPopup: function () {

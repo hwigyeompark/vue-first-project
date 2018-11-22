@@ -38,11 +38,18 @@
           }
       },
     created(){
+          this.getPreCategoryList()
       eventBus.$on('select-category', sendWritingList => {
         this.receivedWritingList = sendWritingList
       })
     },
       methods: {
+        getPreCategoryList: function () {
+          this.$http.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=1`)
+            .then(response => {
+              this.preWritingList = response.data.list
+            })
+        },
         goToDetailPage: function (num) {
           this.$router.push('/detailPage')
           this.selectedDetailNum = num
@@ -50,12 +57,6 @@
             .then(response => {
               this.sendDetailList = response.data.detail
               eventBus.$emit('get-detail', this.sendDetailList)
-            })
-        },
-        getPreCategoryList: function () {
-          this.$http.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=1`)
-            .then(response => {
-              this.preWritingList = response.data.list
             })
         }
       }
