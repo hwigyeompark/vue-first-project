@@ -32,7 +32,9 @@
       data(){
           return{
             receivedWritingList: [],
-            preWritingList: []
+            preWritingList: [],
+            sendDetailList: [],
+            selectedDetailNum: ''
           }
       },
     created(){
@@ -44,6 +46,11 @@
       methods: {
         goToDetailPage: function () {
           this.$router.push('/detailPage')
+          this.$http.get(`http://comento.cafe24.com/detail.php?req_no=${this.selectedDetailNum}`)
+            .then(response => {
+              this.sendDetailList = response.data.detail
+              eventBus.$emit('get-detail', this.sendDetailList)
+            })
         },
         getPreCategoryList: function () {
           this.$http.get(`http://comento.cafe24.com/request.php?page=1&ord=asc&category=1`)

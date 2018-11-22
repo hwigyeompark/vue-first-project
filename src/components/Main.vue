@@ -23,13 +23,10 @@ export default {
     return {
       ads: [],
       writingList: [],
-      selectedSort: '',
-      adImages: []
+      selectedSort: ''
     }
   },
   methods: {
-    getAdImage: function () {
-    }
   }
 }
 </script>

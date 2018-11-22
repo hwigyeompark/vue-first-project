@@ -2,8 +2,8 @@
   <div>
     <Header></Header>
     <div class="container">
-      <h1>Welcom detail page</h1>
-      <div class="detail-box-wrap" v-for="detail of detailList">
+      <h3>Welcom detail page</h3>
+      <div class="detail-box-wrap" v-for="detail of receivedDetailList">
         <div class="form-group">
           <h5>제목</h5>
           <div>{{detail.title}}</div>
@@ -20,10 +20,14 @@
           <h5>내용</h5>
           <div>{{detail.contents}}</div>
         </div>
+        <div class="form-group">
+          <h5>댓글</h5>
+          <div>{{detail.replies}}</div>
+        </div>
       </div>
     </div>
     <!--popup-->
-    <div class="modal" :class="{'is-show':isShow}">
+    <div class="modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -53,33 +57,21 @@
 
 <script>
   import Header from './Header'
+  import {eventBus} from '../main'
 
   export default {
     name: 'detailPage',
     components: {Header},
     data(){
       return{
-        detailList: [],
-        isShow: true
+        receivedDetailList: [],
+        selectedDetailNum: ''
       }
-    },
-    render(h){
-      return h('div', {
-        'class': {
-          'is-show': this.isShow
-        }
-      })
     },
     created(){
-      this.getDetailList()
-    },
-    methods: {
-      getDetailList: function () {
-        this.$http.get(`http://comento.cafe24.com/detail.php?req_no=1`)
-          .then(response => {
-            this.detailList = response.data.detail
-          })
-      }
+      eventBus.$on('get-detail', sendDetailList => {
+        this.receivedDetailList = sendDetailList
+      })
     }
   }
 </script>
