@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <!--popup-->
+    <!--show join popup-->
     <div class="modal fade" id="join-induce-modal-wrap">
       <div class="modal-dialog">
         <div class="modal-content join-induce-modal">
@@ -51,6 +51,25 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-dismiss="modal" @click="showJoinFooterPopup">나중에 하기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--show join footer popup-->
+    <div class="modal" id="join-induce-modal-footer-wrap">
+      <div class="modal-dialog">
+        <div class="modal-content join-induce-footer-modal">
+          <div class="modal-body">
+            <div class="join-induce-footer-box">
+              <div class="join-induce-footer-ment">
+                <p>지금 가입하면 꿈꾸던 기업에 재직 중인 현직자와 <span class="red-span">익명</span>으로 대화할 수 있습니다.</p>
+              </div>
+              <div class="join-btn-footer-wrap">
+                <button class="sns-join-btn">SNS계정으로 빠른 회원가입</button>
+                <p>또는</p>
+                <button class="login-btn">로그인</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -83,7 +102,7 @@
         $('#join-induce-modal-wrap').appendTo('body').modal('show')
       },
       showJoinFooterPopup: function () {
-
+        $('#join-induce-modal-footer-wrap').appendTo('body').modal('show')
       }
     }
   }
@@ -114,9 +133,9 @@
       font-size: 1.1rem;
       vertical-align: center;
     }
-    & span {
-      color: red;
-    }
+  }
+  .red-span{
+    color: red;
   }
 
   .join-btn-wrap {
@@ -141,9 +160,27 @@
       background-color: #00bd39;
     }
   }
+
+  .join-btn-footer-wrap{
+    display: flex;
+    justify-content: center;
+    & button{
+      padding: 3%;
+      border: none;
+      border: 1px solid #555555;
+      margin: 1%;
+    }
+    & .sns-join-btn{
+      background-color: #00c854;
+      color: #ffffff;
+    }
+    & .login-btn{
+      background-color: #ffffff;
+      color: #000000;
+    }
+  }
   @media screen and (max-width: 480px) {
     .join-induce-modal{
-      width: 50%;
     }
   }
 </style>
