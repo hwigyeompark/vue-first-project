@@ -23,7 +23,7 @@
       </div>
     </div>
     <!--popup-->
-    <div class="modal">
+    <div class="modal" :class="{'is-show':isShow}">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -59,12 +59,19 @@
     components: {Header},
     data(){
       return{
-        detailList: []
+        detailList: [],
+        isShow: true
       }
+    },
+    render(h){
+      return h('div', {
+        'class': {
+          'is-show': this.isShow
+        }
+      })
     },
     created(){
       this.getDetailList()
-      this.joinPopup()
     },
     methods: {
       getDetailList: function () {
@@ -72,9 +79,6 @@
           .then(response => {
             this.detailList = response.data.detail
           })
-      },
-      joinPopup: function () {
-
       }
     }
   }

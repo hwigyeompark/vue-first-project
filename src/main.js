@@ -8,7 +8,7 @@ import axios from 'axios'
 import 'expose-loader?$!expose-loader?jQuery!jquery'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-export const eventBus = new Vue();
+export const eventBus = new Vue()
 
 Vue.prototype.$http = axios
 /* eslint-disable no-new */

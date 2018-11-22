@@ -51,6 +51,7 @@
           })
       },
       getCategoryList: function () {
+        console.log('click save')
         this.$http.get(`http://comento.cafe24.com/request.php?page=1&ord=${this.receivedSelectedSort}&category=${this.selectedCategory}`)
           .then(response => {
             this.sendWritingList = response.data.list
