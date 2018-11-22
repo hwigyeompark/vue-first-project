@@ -56,7 +56,7 @@
       </div>
     </div>
     <!--show join footer popup-->
-    <div class="modal" id="join-induce-modal-footer-wrap">
+    <div class="modal fade" id="join-induce-modal-footer-wrap">
       <div class="modal-dialog">
         <div class="modal-content join-induce-footer-modal">
           <div class="modal-body">
