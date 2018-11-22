@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="card writing-box-wrap" v-for="writing of preWritingList" @click="goToDetailPage">
+    <div class="card writing-box-wrap" v-for="writing of receivedWritingList" @click="goToDetailPage">
       <div class="card-header">
         <ul>
           <li></li>

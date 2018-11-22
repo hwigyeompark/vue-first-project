@@ -49,7 +49,7 @@
       getCategoryList: function () {
         axios.get(`http://comento.cafe24.com/request.php?page=1&ord=desc&category=${this.selectedCategory}`)
           .then(response => {
-            this.writingList = response.data.list
+            this.sendWritingList = response.data.list
           })
         eventBus.$emit('select-category', this.sendWritingList)
       }
