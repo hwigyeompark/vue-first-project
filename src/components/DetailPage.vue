@@ -2,30 +2,29 @@
   <div class="detail-wrap">
     <Header></Header>
     <div class="container">
-      <h3>Welcom detail page</h3>
       <div class="detail-box-wrap" v-for="detail of receivedDetailList">
         <div class="form-group">
-          <h5>글 번호</h5>
+          <h5><b>글 번호</b></h5>
           <div>{{detail.no}}</div>
         </div>
         <div class="form-group">
-          <h5>제목</h5>
+          <h5><b>제목</b></h5>
           <div>{{detail.title}}</div>
         </div>
         <div class="form-group">
-          <h5>이메일</h5>
+          <h5><b>이메일</b></h5>
           <div>{{detail.email}}</div>
         </div>
         <div class="form-group">
-          <h5>작성일</h5>
+          <h5><b>작성일</b></h5>
           <div>{{detail.updated_at}}</div>
         </div>
         <div class="form-group">
-          <h5>내용</h5>
+          <h5><b>내용</b></h5>
           <div>{{detail.contents}}</div>
         </div>
         <div class="form-group">
-          <h5>댓글</h5>
+          <h5><b>댓글</b></h5>
           <div>{{detail.replies}}</div>
         </div>
       </div>
@@ -83,6 +82,12 @@
 <style lang="less" scoped>
   .detail-wrap{
     margin: 4%;
+  }
+  .detail-box-wrap{
+    .detail-wrap
+  }
+  .form-group{
+    border-bottom: 1px solid #e0e0e0;
   }
   .join-induce-box {
     width: 100%;
