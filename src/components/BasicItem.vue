@@ -25,7 +25,7 @@
 <script>
   import './Main'
   import './Category'
-  import {eventBus} from '../main';
+  import {eventBus} from '../main'
 
   export default {
         name: 'BasicItem',
@@ -38,7 +38,6 @@
           }
       },
     created(){
-      this.getPreCategoryList()
       eventBus.$on('select-category', sendWritingList => {
         this.receivedWritingList = sendWritingList
       })

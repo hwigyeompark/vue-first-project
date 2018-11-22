@@ -30,9 +30,9 @@
       </div>
     </div>
     <!--popup-->
-    <div class="modal" id="join-induce-modal">
+    <div class="modal fade" id="join-induce-modal-wrap">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content join-induce-modal">
           <div class="modal-header">
             <h3 class="modal-title">회원가입</h3>
           </div>
@@ -50,7 +50,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn" data-dismiss="modal">나중에 하기</button>
+            <button type="button" class="btn" data-dismiss="modal" @click="showJoinFooterPopup">나중에 하기</button>
           </div>
         </div>
       </div>
@@ -65,22 +65,25 @@
   export default {
     name: 'detailPage',
     components: {Header},
+    created(){
+      this.showJoinPopup()
+      eventBus.$on('get-detail', sendDetailList => {
+        this.receivedDetailList = sendDetailList
+      })
+    },
     data(){
       return{
         receivedDetailList: [],
         selectedDetailNum: ''
       }
     },
-    created(){
-      this.showPopup()
-      eventBus.$on('get-detail', sendDetailList => {
-        this.receivedDetailList = sendDetailList
-      })
-    },
     methods: {
-      showPopup: function () {
-        $('#join-induce-modal').modal()
-        alert('dfa')
+      showJoinPopup: function () {
+        console.log('success showjoin')
+        $('#join-induce-modal-wrap').appendTo('body').modal('show')
+      },
+      showJoinFooterPopup: function () {
+
       }
     }
   }
@@ -136,6 +139,11 @@
     }
     & .naver-btn {
       background-color: #00bd39;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .join-induce-modal{
+      width: 50%;
     }
   }
 </style>

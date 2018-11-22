@@ -34,8 +34,12 @@
       border: none;
       background: transparent;
       margin: 1%;
-      &:hover{
+      &:hover {
         cursor: pointer;
+        color: red;
+      }
+      &:active{
+        color: red;
       }
     }
   }

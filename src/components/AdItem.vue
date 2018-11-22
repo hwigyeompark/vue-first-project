@@ -60,9 +60,29 @@
     margin: 3%;
   }
 .ad-box{
+  width: 100%;
   display: flex;
+  overflow: hidden;
+}
+.ad-box-img{
+  width: 60%;
+  overflow: hidden;
 }
   .ad-box-writing{
+    width: 40%;
     padding: 15px;
+  }
+  @media screen and (max-width: 480px) {
+    .ad-box{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .ad-box-img{
+      margin: 0 auto;
+      width: 100%;
+    }
+    .ad-box-writing{
+      .ad-box-img
+    }
   }
 </style>
