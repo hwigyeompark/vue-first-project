@@ -30,7 +30,7 @@
       </div>
     </div>
     <!--show join popup-->
-    <div class="modal fade" id="join-induce-modal-wrap">
+    <div class="modal hide fade" id="join-induce-modal-wrap">
       <div class="modal-dialog">
         <div class="modal-content join-induce-modal">
           <div class="modal-header">
