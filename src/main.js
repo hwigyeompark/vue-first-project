@@ -11,8 +11,10 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 export const eventBus = new Vue()
 
+/* cross-browsing 추가 */
 es6Promise.polyfill()
 Vue.prototype.$http = axios
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
