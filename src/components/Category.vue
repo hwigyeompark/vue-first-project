@@ -4,7 +4,7 @@
         필터
       </button>
       <!--filter modal-->
-      <div class="modal" id="filter-modal">
+      <div class="modal fade" id="filter-modal">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
