@@ -31,7 +31,6 @@
     </div>
     <!--show join popup-->
     <div class="modal fade" id="join-induce-modal-wrap">
-      <div class="modal-dialog">
         <div class="modal-content join-induce-modal">
           <div class="modal-header">
             <h3 class="modal-title">회원가입</h3>
@@ -47,7 +46,6 @@
                 <button class="google-btn">구글 계정으로 회원가입</button>
                 <button class="naver-btn">네이버 계정으로 회원가입</button>
               </div>
-            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-dismiss="modal" @click="showJoinFooterPopup">나중에 하기</button>
@@ -57,7 +55,6 @@
     </div>
     <!--show join footer popup-->
     <div class="modal fade" id="join-induce-modal-footer-wrap">
-      <div class="modal-dialog">
         <div class="modal-content join-induce-footer-modal">
           <div class="modal-body">
             <div class="join-induce-footer-box">
@@ -72,7 +69,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </template>
@@ -102,6 +98,7 @@
         $('#join-induce-modal-wrap').appendTo('body').modal('show')
       },
       showJoinFooterPopup: function () {
+        console.log('success show join footer popup')
         $('#join-induce-modal-footer-wrap').appendTo('body').modal('show')
       }
     }
